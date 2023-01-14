@@ -38,7 +38,7 @@ export default function Navbar({ active }) {
                                 navbarContent.map((e, i) => {
                                     return (
                                         <li>
-                                            <Link key={i} to={e.address} className={`px-3 py-2 text-white font-normal rounded ${active === e.text ? "text-bold bg-sky-200 text-sky-800" : ""}`}>{e.text}</Link>
+                                            <Link key={i} to={e.address} className={`flex px-3 py-2 text-white font-normal rounded ${active === e.text ? "text-bold bg-sky-200 text-sky-800" : ""}`}>{e.text}</Link>
                                         </li>
                                     )
                                 })
