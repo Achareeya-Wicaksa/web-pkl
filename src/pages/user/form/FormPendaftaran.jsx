@@ -26,6 +26,12 @@ const FormPendaftaran = props => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
+        const current = new Date();
+        values.month=(current.getMonth()+1)
+        values.date=(current.getDate())
+        values.year=(current.getFullYear())
+        
+        //values.now = `${current.getFullYear()}-${(current.getMonth()+1)}-${current.getDate()}`
         const date_start = values.start_date + 'T00:00:00Z';
         const date_end = values.end_date + 'T00:00:00Z';
         const formData = new FormData();
@@ -38,6 +44,12 @@ const FormPendaftaran = props => {
         formData.append('study_field_id', values.study_field_id);
         formData.append('start_date', date_start);
         formData.append('end_date', date_end);
+
+        if(values.month !=[1-9]){
+            values.month= '0'+values.month;
+
+        }
+        values.now=values.year+'-'+values.month+'-'+values.date;
         await axios.post(
             `${process.env.REACT_APP_API_HOST}/submissions`,
             formData,
@@ -57,8 +69,10 @@ const FormPendaftaran = props => {
             })
             .catch(function (error) {
                 // handle error
+  
                 alert(error);
-                console.log(error);
+                
+                console.log( values.now);
             });
     }
 
@@ -69,11 +83,11 @@ const FormPendaftaran = props => {
             <form onSubmit={handleSubmit}>
                 <div className="mt-4">
                     <label for="countries" className="block mb-2 text-sm font-medium text-gray-900">Nama (Ketua Kelompok)</label>
-                    <input onChange={handleChange('name')} value={values.name} type="text" id="base-input" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[40rem] p-2.5" />
+                    <input onChange={handleChange('name')} value={values.name} type="text" id="base-input"  class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[40rem] p-2.5" />
                 </div>
                 <div className="mt-4">
                     <label for="countries" className="block mb-2 text-sm font-medium text-gray-900">Email (Ketua Kelompok)</label>
-                    <input onChange={handleChange('email')} value={values.email} type="text" id="base-input" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[40rem] p-2.5" />
+                    <input onChange={handleChange('email')} value={values.email} type="email" id="base-input" required  class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[40rem] p-2.5" />
                 </div>
                 <div className="mt-4">
                     <label for="countries" className="block mb-2 text-sm font-medium text-gray-900">Asal Sekolah</label>
@@ -103,7 +117,7 @@ const FormPendaftaran = props => {
                 </div>
                 <div className="mt-4">
                     <label for="countries" className="block mb-2 text-sm font-medium text-gray-900">Tanggal Mulai</label>
-                    <input type="date" onChange={handleChange('start_date')} className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[40rem] p-2.5" />
+                    <input type="date" min={values.now} onChange={handleChange('start_date')} className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[40rem] p-2.5" />
                 </div>
                 <div className="mt-4">
                     <label for="countries" className="block mb-2 text-sm font-medium text-gray-900">Tanggal Selesai</label>
@@ -114,7 +128,7 @@ const FormPendaftaran = props => {
                     <label for="countries" className="block mb-2 text-sm font-medium text-gray-900">Upload Surat Pengantar (maksimal 2 mb)</label>
                     <input type="file" onChange={handleChangeFile} className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[40rem] p-2.5" id="file" />
                 </div>
-
+                            
                 <Button text={"Submit"} type={"submit"} className="mt-12 w-[40rem] rounded-md bg-[#35A5D9] hover:bg-[#E7F7FF] hover:text-[#35A5D9] font-normal" />
             </form>
 
