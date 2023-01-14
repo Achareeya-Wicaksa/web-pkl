@@ -107,7 +107,7 @@ const FormPendaftaran = props => {
                 </div>
                 <div className="mt-4">
                     <label for="countries" className="block mb-2 text-sm font-medium text-gray-900">Tanggal Selesai</label>
-                    <input type="date" onChange={handleChange('end_date')} className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[40rem] p-2.5" />
+                    <input type="date" min={values.start_date} onChange={handleChange('end_date')} className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[40rem] p-2.5" />
                 </div>
 
                 <div className="mt-4">
