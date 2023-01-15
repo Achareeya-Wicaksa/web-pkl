@@ -36,9 +36,6 @@ const FormPendaftaran = props => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        
-        
-        //values.now = `${current.getFullYear()}-${(current.getMonth()+1)}-${current.getDate()}`
         const date_start = values.start_date + 'T00:00:00Z';
         const date_end = values.end_date + 'T00:00:00Z';
         const formData = new FormData();
@@ -51,8 +48,6 @@ const FormPendaftaran = props => {
         formData.append('study_field_id', values.study_field_id);
         formData.append('start_date', date_start);
         formData.append('end_date', date_end);
-
-        
         await axios.post(
             `${process.env.REACT_APP_API_HOST}/submissions`,
             formData,
@@ -72,13 +67,32 @@ const FormPendaftaran = props => {
             })
             .catch(function (error) {
                 // handle error
-  
-                alert(error);
                 
-                console.log( values.now);
+                console.log(error);
             });
-    }
 
+            if(error!=""){
+                alert(error);
+            }
+        
+    }
+var error
+
+    if(values.total_trainee < 2){
+        error="Jumlah anggota minimal 2 orang";
+    }
+    if(values.name==""){
+        error="Isilah Nama anda / Ketua kelompok"}
+    
+    if(values.study_field_id==""){
+        error="Isilah bidang keilmuan anda."
+    }
+    if(values.school_origin==""){
+        error="Isilah asal sekolah anda."
+    }
+    if(values.division_id==""){
+        error="Isilah bidang yang ingin didaftarkan."
+    }
     return (
         <div className="mt-12 mb-24 flex flex-col items-center">
             <b className="mt-5 mb-5 text-3xl text-[#35A5D9]">Data Kelompok</b>
@@ -86,11 +100,11 @@ const FormPendaftaran = props => {
             <form onSubmit={handleSubmit}>
                 <div className="mt-4">
                     <label for="countries" className="block mb-2 text-sm font-medium text-gray-900">Nama (Ketua Kelompok)</label>
-                    <input onChange={handleChange('name')} value={values.name} type="text" id="base-input"  class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[40rem] p-2.5" />
+                    <input onChange={handleChange('name')} value={values.name} type="text" id="base-input" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[40rem] p-2.5" />
                 </div>
                 <div className="mt-4">
                     <label for="countries" className="block mb-2 text-sm font-medium text-gray-900">Email (Ketua Kelompok)</label>
-                    <input onChange={handleChange('email')} value={values.email} type="email" id="base-input" required  class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[40rem] p-2.5" />
+                    <input onChange={handleChange('email')} value={values.email} type="text" id="base-input" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[40rem] p-2.5" />
                 </div>
                 <div className="mt-4">
                     <label for="countries" className="block mb-2 text-sm font-medium text-gray-900">Asal Sekolah</label>
@@ -131,7 +145,7 @@ const FormPendaftaran = props => {
                     <label for="countries" className="block mb-2 text-sm font-medium text-gray-900">Upload Surat Pengantar (maksimal 2 mb)</label>
                     <input type="file" onChange={handleChangeFile} className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[40rem] p-2.5" id="file" />
                 </div>
-                            
+
                 <Button text={"Submit"} type={"submit"} className="mt-12 w-[40rem] rounded-md bg-[#35A5D9] hover:bg-[#E7F7FF] hover:text-[#35A5D9] font-normal" />
             </form>
 
