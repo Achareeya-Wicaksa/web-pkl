@@ -24,12 +24,19 @@ const FormPendaftaran = props => {
         setFile(event.target.files[0])
     }
 
-    const handleSubmit = async (event) => {
-        event.preventDefault()
         const current = new Date();
         values.month=(current.getMonth()+1)
         values.date=(current.getDate())
         values.year=(current.getFullYear())
+        if(values.month !=[1-9]){
+            values.month= '0'+values.month;
+
+        }
+        values.now=values.year+'-'+values.month+'-'+values.date;
+
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        
         
         //values.now = `${current.getFullYear()}-${(current.getMonth()+1)}-${current.getDate()}`
         const date_start = values.start_date + 'T00:00:00Z';
@@ -45,11 +52,7 @@ const FormPendaftaran = props => {
         formData.append('start_date', date_start);
         formData.append('end_date', date_end);
 
-        if(values.month !=[1-9]){
-            values.month= '0'+values.month;
-
-        }
-        values.now=values.year+'-'+values.month+'-'+values.date;
+        
         await axios.post(
             `${process.env.REACT_APP_API_HOST}/submissions`,
             formData,
