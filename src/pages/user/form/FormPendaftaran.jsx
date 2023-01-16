@@ -28,9 +28,19 @@ const FormPendaftaran = props => {
         values.month=(current.getMonth()+1)
         values.date=(current.getDate())
         values.year=(current.getFullYear())
-        if(values.month !=[1-9]){
+        if( values.month ==1||values.month==2||
+            values.month ==3||values.month==4||
+            values.month ==5||values.month==6||
+            values.month ==7||values.month==8||
+            values.month ==9){
             values.month= '0'+values.month;
-
+        }
+        if( values.date ==1||values.date==2||
+            values.date ==3||values.date==4||
+            values.date ==5||values.date==6||
+            values.date ==7||values.date==8||
+            values.date ==9){
+            values.date= '0'+values.date;
         }
         values.now=values.year+'-'+values.month+'-'+values.date;
 
