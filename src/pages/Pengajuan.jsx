@@ -14,7 +14,7 @@ import { useRef } from "react";
   // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 
 export default function Pengajuan () {
-
+    const [ month, setMonth ] = useState(new Date().getMonth());
     const [ userInfo, setUserInfo ] = useState();
     const [ data, setData ] = useState([]);
     const [ active, setActive ] = useState("Diproses");
@@ -32,15 +32,48 @@ export default function Pengajuan () {
 
         console.log("ref", tableRef.current)
         
-        axios
-          .get(`${process.env.REACT_APP_API_HOST}/submissions`)
-          .then((response) => {
-            // console.log(response.data)
-            setData(response.data.submission)
-          })
-          .catch(console.error)
+        //axios
+        //  .get(`${process.env.REACT_APP_API_HOST}/submissions`)
+        //  .then((response) => {
+        //    // console.log(response.data)
+        //    
+        //    setData(response.data.submission) orinya cuma line ini
+        //    //setData(response.data.submission.filter((e) => {
+        //    //    return e.created_at == "2023-01-11T11:01:34.865+07:00"//dislice
+        //     // }))
+        //  })
+        //  .catch(console.error)
         
     }, []);
+
+    function filteredList() {
+        if(month > 0 && month < 13) {
+          axios.get(`${process.env.REACT_APP_API_HOST}/submissions`)
+          .then((response) => {
+            let accepted = response.data.submission.filter((e) => {
+              if(e.status == "Diterima") {
+                let dateStart = new Date(e.start_date);
+                let dateEnd = new Date(e.end_date);
+                let now = new Date(new Date().getFullYear()+"-"+month+"-01");
+                // console.log(new Date().getFullYear()+"-"+month+"-01")
+                if(now.getFullYear() >= dateStart.getFullYear() && now.getFullYear() <= dateEnd.getFullYear()) {
+                  if(now.getMonth() >= dateStart.getMonth() && now.getMonth() <= dateEnd.getMonth()) {
+                    return e;
+                  }
+                }
+                
+                // if(now >= dateStart && now <= dateEnd) {
+                //   return e;
+                // }
+              }
+            })
+            setData(accepted)
+            // console.log(accepted)
+          })
+        } else {
+          getAllSubmissions()
+        }
+      }
 
     // useEffect(() => {
     //   if(active === "proses") {
@@ -77,6 +110,27 @@ export default function Pengajuan () {
     //     setData([])
     //   }
     // }, [active])
+
+    function getAllSubmissions() {
+        axios.get(`${process.env.REACT_APP_API_HOST}/submissions`)
+          .then((response) => {
+            let accepted = response.data.submission.filter((e) => {
+                return e.status == "Diproses"||e.status == "Diterima"||e.status == "Ditolak"||e.status == "Dibatalkan"
+            })
+            setData(accepted)
+            console.log(accepted)
+  
+          })
+      }
+
+    function handleMonthChange(e) {
+        if(month != "*") setMonth(Number.parseInt(e)) 
+        else getAllSubmissions()
+      }
+      
+      useEffect(() => {
+        filteredList()
+      }, [month])
 
     let ddopt = [
       {
@@ -187,7 +241,7 @@ export default function Pengajuan () {
                                 </div>
                                 <button onClick={handleExport} className="bg-blue-600 rounded-lg text-white px-3 py-1 h-fit">Export</button>
                             </div>
-                            <Searchbar useDropdown={true} dropdownOptions={ddopt} className="mt-5" />
+                            <Searchbar useDropdown={true} dropdownOptions={ddopt} className="mt-5" onMonthChange={handleMonthChange}/>
                             
                         </div>
                         <div className="bg-white rounded-xl h-[500px]">
