@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../../../components/Button';
 import axios from 'axios';
+import { Helmet } from "react-helmet";
 
 const FormPendaftaran = props => {
 
@@ -104,9 +105,12 @@ var error
         error="Isilah bidang yang ingin didaftarkan."
     }
     return (
+        
         <div className="mt-12 mb-24 flex flex-col items-center">
             <b className="mt-5 mb-5 text-3xl text-[#35A5D9]">Data Kelompok</b>
-
+            <Helmet>
+                <title>Pendaftaran</title>
+            </Helmet>
             <form onSubmit={handleSubmit}>
                 <div className="mt-4">
                     <label for="countries" className="block mb-2 text-sm font-medium text-gray-900">Nama (Ketua Kelompok)</label>
