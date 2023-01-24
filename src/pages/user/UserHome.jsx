@@ -30,7 +30,7 @@ export default function UserHome() {
     }, []);
 
     return (
-        <div>
+        <div className="animate-fade animate-once animate-delay-100">
             <Helmet>
                 <title>Web Penerimaan PKL Angkasa Pura 1 Bandar Juanda Surabaya</title>
             </Helmet>
@@ -38,11 +38,11 @@ export default function UserHome() {
             <Navbar active={"Beranda"} />
 
             <div className="mt-16 px-32 flex flex-col justify-center w-cover h-[680px] bg-cover bg-no-repeat" style={{ background: "url('/home-banner.png')", backgroundSize: "cover", backgroundRepeat: "no-repeat" }}>
-                <b className="break-normal text-6xl text-white">Penerimaan Online Siswa PKL</b>
-                <span className="mt-6 text-white">Selamat datang di Website lingkungan PT.Angkasa Pura I (PERSERO) Cabang Bandar Udara Internasional Juanda Surabaya</span>
+                <b className="break-normal text-6xl text-white animate-fade-down animate-once animate-ease-linear animate-normal animate-delay-700">Penerimaan Online Siswa PKL</b>
+                <span className="mt-6 text-white animate-fade-down animate-once animate-ease-linear animate-normal animate-delay-700">Selamat datang di Website lingkungan PT.Angkasa Pura I (PERSERO) Cabang Bandar Udara Internasional Juanda Surabaya</span>
                 <div className="flex flex-row">
-                    <button text={"Daftar"} onClick={() => { navigate("/daftar") }} className="px-6 py-2 mt-12 mr-2 w-fit rounded-md bg-[#35A5D9] hover:bg-white hover:text-[#35A5D9] font-normal text-white">Daftar</button>
-                    <a href="#mekanisme" className="px-6 py-2 mt-12 ml-2 w-fit rounded-md bg-white text-[#35A5D9] hover:bg-[#35A5D9] hover:text-white font-normal">Mekanisme</a>
+                    <button text={"Daftar"} onClick={() => { navigate("/daftar") }} className="transition ease-in-out delay-150 duration-300 px-6 py-2 mt-12 mr-2 w-fit rounded-md bg-[#35A5D9] hover:bg-white hover:text-[#35A5D9] hover:-translate-y-1 hover:scale-110 transition ease-in-out delay-150 font-normal text-white animate-jump-in animate-once animate-ease-in animate-normal animate-delay-700">Daftar</button>
+                    <a href="#mekanisme" className="transition ease-in-out animate-delay-[1300ms] duration-300 px-6 py-2 mt-12 ml-2 w-fit rounded-md bg-white text-[#35A5D9] hover:bg-[#35A5D9] hover:text-white font-normal animate-jump-in animate-once animate-ease-in animate-normal animate-delay-700">Mekanisme</a>
                 </div>
             </div>
 
