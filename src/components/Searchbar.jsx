@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Button from "./Button"
 
-export default function Searchbar({useDropdown = false, dropdownOptions = [], placeholder = "Cari Nama", className, leftSide, inputClass, onMonthChange}) {
+export default function Searchbar({useDropdown = false, dropdownOptions = [], placeholder = "Cari Nama", className, leftSide, inputClass, onMonthChange,textchange}) {
     
     const [ month, setMonth ] = useState();
 
@@ -9,6 +9,9 @@ export default function Searchbar({useDropdown = false, dropdownOptions = [], pl
         setMonth(e.target.value)
         console.log("child", e.target.value)
         onMonthChange(e.target.value)
+    }
+    function handletext(e) {
+        textchange(e.target.value)
     }
     
     return (
@@ -33,8 +36,8 @@ export default function Searchbar({useDropdown = false, dropdownOptions = [], pl
                 </div>
                 : null
             }
-            <input type="text" className={"px-4 py-2 -ml-0.5 border rounded-r-xl flex-grow "+inputClass} placeholder={placeholder}></input>
-            <Button text={"Search"} onClick={()=>{}} className="ml-5" />
+            <input type="text" className={"px-4 py-2 -ml-0.5 border rounded-r-xl flex-grow "+inputClass} placeholder={placeholder} onChange={handletext}></input>
+            
         </div>
     )
 }

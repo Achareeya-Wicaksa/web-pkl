@@ -132,6 +132,34 @@ export default function Pengajuan () {
         filteredList()
       }, [month])
 
+      function handleText(x) {
+        if(x!=""){
+          axios.get(`${process.env.REACT_APP_API_HOST}/submissions`)
+            .then((response) => {
+              let accepted = response.data.submission.filter((e) => {
+                //return e.status == "Diterima"
+                return e.name.toLowerCase().includes(x.toLowerCase()) 
+              })
+              setData(accepted)
+              console.log(accepted)
+    
+            })
+        }
+        else{
+          axios.get(`${process.env.REACT_APP_API_HOST}/submissions`)
+          .then((response) => {
+            let accepted = response.data.submission.filter((e) => {
+                return e.status == "Diproses"||e.status == "Diterima"||e.status == "Ditolak"||e.status == "Dibatalkan"
+            })
+            setData(accepted)
+            console.log(accepted)
+  
+          })
+        }
+    
+          console.log(x)
+        }
+
     let ddopt = [
       {
           text: "January",
@@ -241,7 +269,7 @@ export default function Pengajuan () {
                                 </div>
                                 <button onClick={handleExport} className="bg-blue-600 rounded-lg text-white px-3 py-1 h-fit">Export</button>
                             </div>
-                            <Searchbar useDropdown={true} dropdownOptions={ddopt} className="mt-5" onMonthChange={handleMonthChange}/>
+                            <Searchbar useDropdown={true} dropdownOptions={ddopt} className="mt-5" onMonthChange={handleMonthChange} textchange={handleText}/>
                             
                         </div>
                         <div className="bg-white rounded-xl h-[500px]">

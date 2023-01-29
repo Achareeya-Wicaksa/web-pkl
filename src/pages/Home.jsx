@@ -63,6 +63,7 @@ export default function Home () {
         .then((response) => {
           let accepted = response.data.submission.filter((e) => {
             return e.status == "Diterima"
+//            return e.name.toLowerCase().includes("usva") 
           })
           setData(accepted)
           console.log(accepted)
@@ -73,6 +74,35 @@ export default function Home () {
     function handleMonthChange(e) {
       if(month != "*") setMonth(Number.parseInt(e))
       else getAllSubmissions()
+    }
+    function handleText(x) {
+    if(x!=""){
+      axios.get(`${process.env.REACT_APP_API_HOST}/submissions`)
+        .then((response) => {
+          //let low=x.toLowerCase()
+          let accepted = response.data.submission.filter((e) => {
+            //return e.status == "Diterima"
+            return e.name.toLowerCase().includes(x.toLowerCase()) 
+          })
+          setData(accepted)
+          console.log(accepted)
+
+        })
+    }
+    else{
+      axios.get(`${process.env.REACT_APP_API_HOST}/submissions`)
+        .then((response) => {
+          let accepted = response.data.submission.filter((e) => {
+            return e.status == "Diterima"
+            //return e.name.toLowerCase().includes("aca") 
+          })
+          setData(accepted)
+          console.log(accepted)
+
+        })
+    }
+
+      console.log(x)
     }
 
     useEffect(() => {
@@ -246,7 +276,7 @@ export default function Home () {
                         <div className="bg-white rounded-xl p-5 flex flex-col items-start flex-grow gap-1">
                             <b className="text-2xl">Halo {userInfo.name.split(" ")[0]}!</b>
                             <span className="text-slate-600">Selamat datang kembali!</span>
-                            <Searchbar useDropdown={true} dropdownOptions={ddopt} className="mt-5" onMonthChange={handleMonthChange} />
+                            <Searchbar useDropdown={true} dropdownOptions={ddopt} className="mt-5" onMonthChange={handleMonthChange} textchange={handleText}/>
                         </div>
                     </div>
                     <div className="flex flex-row gap-3">
