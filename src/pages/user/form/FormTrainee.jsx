@@ -65,8 +65,44 @@ const FormTrainee = () => {
                 }
             )
                 .then(function (response) {
-                    // handle success
-                    alert("Selamat anda telah berhasil terdaftar, silahkan simpan kode registrasi berikut : " + codeSubmission);
+                    //handle succes
+                   alert=<div class="min-h-screen">
+    
+    <div class="fixed h-screen w-screen flex items-center justify-center">
+
+        <div class="absolute inset-0 bg-gray-200 z-10">
+        </div>
+
+        <div class="max-w-xl w-full bg-white shadow-lg z-50 rounded-lg overflow-hidden">
+            <div class="p-4 flex space-x-4 md:flex-row flex-col md:text-left text-center items-center">
+                <div class="bg-red-50 p-3 md:self-start rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current text-red-700" width="24" height="24" viewBox="0 0 24 24"><path d="M12 5.177l8.631 15.823h-17.262l8.631-15.823zm0-4.177l-12 22h24l-12-22zm-1 9h2v6h-2v-6zm1 9.75c-.689 0-1.25-.56-1.25-1.25s.561-1.25 1.25-1.25 1.25.56 1.25 1.25-.561 1.25-1.25 1.25z"/></svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-semibold tracking-wide text-red-700 block md:flex justify-between">
+                        <span>Deactivate account</span>
+                        <span class=" hidden md:inline-flex cursor-pointer">
+                            <svg class="w-4 h-4 hidden md:inline-flex fill-current text-gray-400 " xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
+                        </span>
+                    </h1>
+                    <p class="text-gray-500">
+                    ("Selamat anda telah berhasil terdaftar, silahkan simpan kode registrasi berikut : " + codeSubmission);
+                    </p>
+                </div>
+            </div>
+            <div class="p-3 bg-gray-50 text-right md:space-x-4 md:block flex flex-col-reverse">
+                <button class="px-4 md:py-1.5 py-2 bg-white border-2 rounded-lg focus:ring-offset-2 focus:outline-none focus:ring-2 focus:ring-blue-800 hover:bg-gray-50">
+                    Cancel
+                </button>
+                <button class="mb-2 md:mb-0 px-4 md:py-1.5 py-2 bg-red-700 text-white rounded-lg focus:ring-offset-2 focus:outline-none focus:ring-2 focus:ring-red-800 hover:bg-red-800">
+                    Deactivate
+                </button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+                    
                     console.log('axios', response);
                     navigate("/cekajuan");
                 })
@@ -159,7 +195,7 @@ const FormTrainee = () => {
 
         <div className="mt-12 mb-24 flex flex-col items-center">
 
-            {count.current && <b className="mt-5 mb-5 text-3xl text-[#35A5D9]">Data Anggota {+ count.current}</b>}
+            {count.current && <b className="mt-5 mb-5 text-3xl text-[#35A5D9] mt-6 text-white animate-fade-down animate-once animate-ease-linear animate-normal animate-delay-900">Data Anggota {+ count.current}</b>}
 
             <div className="mt-4">
                 <label for="countries" className="block mb-2 text-sm font-medium text-gray-900">Nama</label>
