@@ -27,7 +27,7 @@ export default function Navbar({ active }) {
         <div>
             <nav className="px-32 py-2.5 bg-[#35A5D9] fixed w-full z-20 top-0 left-0">
                 <div className="container flex flex-wrap justify-between items-center mx-auto ">
-                    <a href="/" className="flex items-center animate-bounce animate-infinite animate-delay-100">
+                    <a href="/" className="flex items-center animate-fade animate-once animate-delay-700">
                         <img src={apLogo} className="mr-3 h-6 sm:h-9" alt="AP Logo" />
                     </a>
 

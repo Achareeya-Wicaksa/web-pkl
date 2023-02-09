@@ -57,8 +57,8 @@ export default function Pendaftaran() {
             <Navbar active={"Pendaftaran"} />
 
             <div className="mt-16 px-32 flex flex-col items-center justify-center w-cover h-[520px] bg-screen bg-no-repeat" style={{ background: "url('/daftar-banner.png')", backgroundSize: "cover", backgroundRepeat: "no-repeat" }}>
-                <b className="break-normal text-6xl text-white">Pendaftaran Calon Peserta PKL</b>
-                <span className="mt-6 text-white">Silahkan ikuti dan lengkapi formulir pendaftaran di bawah ini dan pastikan data yang kalian isikan sudah benar</span>
+                <b className="break-normal text-6xl text-white animate-fade animate-once animate-delay-100">Pendaftaran Calon Peserta PKL</b>
+                <span className="mt-6 text-white mt-6 text-white animate-fade-down animate-once animate-ease-linear animate-normal animate-delay-700">Silahkan ikuti dan lengkapi formulir pendaftaran di bawah ini dan pastikan data yang kalian isikan sudah benar</span>
             </div>
 
             {/* {periksa ? <FormPeriksa dataKeilmuan={dataKeilmuan} dataDivisi={dataDivisi} showPendaftaran={setPendaftaran} showPeriksa={setPeriksa} /> : null} */}
@@ -66,6 +66,7 @@ export default function Pendaftaran() {
             {trainee ? <FormTrainee jumlahAnggota={anggota} /> : null}
 
             <Footer />
+        
         </div>
     )
 }

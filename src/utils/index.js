@@ -1,4 +1,4 @@
-
+import 'tw-elements';
 export function loginCheck() {
     
   if(!localStorage.ap_data || !JSON.parse(localStorage.ap_data).isLoggedIn) {
