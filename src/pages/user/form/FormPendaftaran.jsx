@@ -129,9 +129,11 @@ var error
         </div>
     }
     return (
+
+        <div data-aos="fade-down" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="false" data-aos-anchor-placement="top-center">
         
         <div className="mt-12 mb-24 flex flex-col items-center">
-            <b className="mt-5 mb-5 text-3xl text-[#35A5D9]">Data Kelompok</b>
+            <b className="mt-5 mb-5 text-3xl text-[#35A5D9] mt-6 text-white animate-fade-down animate-once animate-ease-linear animate-normal animate-delay-1000">Data Kelompok</b>
             <Helmet>
                 <title>Pendaftaran</title>
             </Helmet>
@@ -187,6 +189,7 @@ var error
                 <Button text={"Submit"} type={"submit"} className="mt-12 w-[40rem] rounded-md bg-[#35A5D9] hover:bg-[#E7F7FF] hover:text-[#35A5D9] font-normal" />
             </form>
                             {error}
+        </div>
         </div>
         
     );

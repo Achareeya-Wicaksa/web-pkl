@@ -31,13 +31,13 @@ export default function CekAjuan() {
             <Navbar active={"Cek Ajuan"} />
 
             <div className="mt-24 px-32 py-12 bg-white flex flex-col items-center justify-center">
-                <b className="mt-5 text-4xl text-[#35A5D9]">Cek Ajuan Pendaftaranmu!</b>
-                <span className="mt-7">Silahkan masukkan nomor registrasi pendaftaranmu untuk melakukan pengecekan status pengajuanmu</span>
+                <b className="mt-5 text-4xl text-[#35A5D9] animate-fade animate-once animate-delay-100">Cek Ajuan Pendaftaranmu!</b>
+                <span className="mt-7 animate-fade-down animate-once animate-delay-100">Silahkan masukkan nomor registrasi pendaftaranmu untuk melakukan pengecekan status pengajuanmu</span>
 
-                <div className="mt-16 flex flex-col items-center">
+                <div className="mt-16 flex flex-col items-center animate-fade animate-once animate-delay-100">
                     <div class="mb-6">
-                        <label for="base-input" class="block mb-2 text-sm font-medium text-black">Nomor Registrasi</label>
-                        <input value={registrationNumber} onChange={(e) => setRegistrationNumber(e.target.value)} type="text" id="base-input" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[40rem] p-2.5" />
+                        <label for="base-input" class="block mb-2 text-sm font-medium text-black animate-fade animate-once animate-delay-100">Nomor Registrasi</label>
+                        <input value={registrationNumber} onChange={(e) => setRegistrationNumber(e.target.value)} type="text" id="base-input" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[40rem] p-2.5 animate-fade animate-once animate-delay-100" />
                     </div>
                     <Button text={"Periksa"} onClick={async () => {
                         const data = (await axios.get(`${process.env.REACT_APP_API_HOST}/submissions/${registrationNumber}`)).data;
