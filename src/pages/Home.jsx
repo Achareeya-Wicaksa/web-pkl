@@ -27,7 +27,21 @@ export default function Home () {
     const [ chartLabels, setChartLabels ] = useState([]);
     const [ chartValuesKuota, setChartValuesKuota ] = useState([]);
     const [ chartValuesPendaftar, setChartValuesPendaftar ] = useState([]);
-    const [ month, setMonth ] = useState(new Date().getMonth());
+    const [ month, setMonth ] = useState(new Date().getMonth()+1);
+
+    function getAllSubmissions() {
+      axios.get(`${process.env.REACT_APP_API_HOST}/submissions`)
+        .then((response) => {
+          let accepted = response.data.submission.filter((e) => {
+            return e.status == "Diterima"
+//            return e.name.toLowerCase().includes("usva") 
+
+          })
+          setData(accepted)
+          //console.log(accepted)
+//console.log(new Date().getMonth())
+        })
+    }
 
     function filteredList() {
       if(month > 0 && month < 13) {
@@ -58,21 +72,11 @@ export default function Home () {
       }
     }
 
-    function getAllSubmissions() {
-      axios.get(`${process.env.REACT_APP_API_HOST}/submissions`)
-        .then((response) => {
-          let accepted = response.data.submission.filter((e) => {
-            return e.status == "Diterima"
-//            return e.name.toLowerCase().includes("usva") 
-          })
-          setData(accepted)
-          console.log(accepted)
 
-        })
-    }
 
     function handleMonthChange(e) {
       if(month != "*") setMonth(Number.parseInt(e))
+      
       else getAllSubmissions()
     }
     function handleText(x) {
@@ -82,10 +86,10 @@ export default function Home () {
           //let low=x.toLowerCase()
           let accepted = response.data.submission.filter((e) => {
             //return e.status == "Diterima"
-            return e.name.toLowerCase().includes(x.toLowerCase()) 
+            return e.status=="Diterima" && e.name.toLowerCase().includes(x.toLowerCase()) 
           })
           setData(accepted)
-          console.log(accepted)
+          //console.log(accepted)
 
         })
     }
@@ -97,12 +101,12 @@ export default function Home () {
             //return e.name.toLowerCase().includes("aca") 
           })
           setData(accepted)
-          console.log(accepted)
+         // console.log(accepted)
 
         })
     }
 
-      console.log(x)
+      //console.log(x)
     }
 
     useEffect(() => {

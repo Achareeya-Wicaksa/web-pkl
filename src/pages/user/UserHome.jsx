@@ -47,7 +47,7 @@ export default function UserHome() {
 
         async function getData() {
             const data = (await axios.get(`${process.env.REACT_APP_API_HOST}/list_division_fields`)).data;
-            console.log('data', data.data);
+            //console.log('data', data.data);
             setData(data.data.map((item) => ({
                 title: item.division_name,
                 requirements: item.list_study_field
@@ -75,7 +75,7 @@ export default function UserHome() {
                 </div>
             </div>
 
-           <div data-aos="zoom-in" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="false" data-aos-anchor-placement="top-center">
+           <div data-aos="fade-up" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="false" data-aos-anchor-placement="top-center">
             <div className="px-32 py-12 bg-[#F3FBFF] flex flex-col min-h-[100vh]">
                 <b className="mt-5 text-4xl text-[#35A5D9]">Lowongan Divisi</b>
                 <span className="mt-7">Sebelum melakukan pendaftaran silahkan cek kesesuaian  posisi yang ingin kalian lamar dengan ilmu keahlian kalian</span>

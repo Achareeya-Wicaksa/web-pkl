@@ -399,13 +399,7 @@ export default function Editkuota() {
                     </form>
                   </Modal>
                 </div>
-                <Searchbar
-                  useDropdown={false}
-                  dropdownOptions={ddopt}
-                  placeholder={"Cari unit kerja"}
-                  className="mt-5"
-                  inputClass={"rounded-xl"}
-                />
+                
               </div>
               <div className="bg-white rounded-xl min-h-[500px] overflow-y-auto h-[500px]">
                 <table className="px-3 py-2">

@@ -14,7 +14,7 @@ import { useRef } from "react";
   // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 
 export default function Pengajuan () {
-    const [ month, setMonth ] = useState(new Date().getMonth());
+    const [ month, setMonth ] = useState(new Date().getMonth()+1);
     const [ userInfo, setUserInfo ] = useState();
     const [ data, setData ] = useState([]);
     const [ active, setActive ] = useState("Diproses");
@@ -46,12 +46,24 @@ export default function Pengajuan () {
         
     }, []);
 
+    function getAllSubmissions() {
+        axios.get(`${process.env.REACT_APP_API_HOST}/submissions`)
+          .then((response) => {
+            let accepted = response.data.submission.filter((e) => {
+                return e.status == "Diproses"||e.status == "Diterima"||e.status == "Ditolak"||e.status == "Dibatalkan"
+            })
+            setData(accepted)
+            //console.log(accepted)
+  
+          })
+      }
+
     function filteredList() {
         if(month > 0 && month < 13) {
           axios.get(`${process.env.REACT_APP_API_HOST}/submissions`)
           .then((response) => {
             let accepted = response.data.submission.filter((e) => {
-              if(e.status == "Diterima") {
+              if(e.status == "Diterima"||e.status == "Diproses"||e.status == "Ditolak") {
                 let dateStart = new Date(e.start_date);
                 let dateEnd = new Date(e.end_date);
                 let now = new Date(new Date().getFullYear()+"-"+month+"-01");
@@ -111,17 +123,7 @@ export default function Pengajuan () {
     //   }
     // }, [active])
 
-    function getAllSubmissions() {
-        axios.get(`${process.env.REACT_APP_API_HOST}/submissions`)
-          .then((response) => {
-            let accepted = response.data.submission.filter((e) => {
-                return e.status == "Diproses"||e.status == "Diterima"||e.status == "Ditolak"||e.status == "Dibatalkan"
-            })
-            setData(accepted)
-            console.log(accepted)
-  
-          })
-      }
+    
 
     function handleMonthChange(e) {
         if(month != "*") setMonth(Number.parseInt(e)) 
@@ -141,7 +143,7 @@ export default function Pengajuan () {
                 return e.name.toLowerCase().includes(x.toLowerCase()) 
               })
               setData(accepted)
-              console.log(accepted)
+              //console.log(accepted)
     
             })
         }
@@ -152,7 +154,7 @@ export default function Pengajuan () {
                 return e.status == "Diproses"||e.status == "Diterima"||e.status == "Ditolak"||e.status == "Dibatalkan"
             })
             setData(accepted)
-            console.log(accepted)
+            //console.log(accepted)
   
           })
         }
@@ -279,7 +281,10 @@ export default function Pengajuan () {
                             <button className={`py-4 w-full ${active === "Ditolak" ? "border-gray-600 border-b-4" : ""}`} onClick={()=>setActive("Ditolak")}>Ditolak</button>
                             <button className={`py-4 w-full ${active === "Dibatalkan" ? "border-gray-600 border-b-4" : ""}`} onClick={()=>setActive("Dibatalkan")}>Dibatalkan</button>
                           </div>
-                          <Table className="bg-white rounded-xl overflow-y-auto max-h-[300px]" data={data} ref={tableRef} active={active} />
+                          <Table className="bg-white rounded-xl overflow-y-auto max-h-[300px]" data={data} ref={tableRef} active={active}
+                          
+                          />
+                          
                         </div>
                     </div>
                 </div>
