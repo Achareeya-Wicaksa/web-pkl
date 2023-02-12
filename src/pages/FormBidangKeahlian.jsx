@@ -126,20 +126,20 @@ export default function FormBidangKeahlian ({}) {
   function getBidangKeahlian() {
     axios.get(`${process.env.REACT_APP_API_HOST}/divisions/${params.id}`)
       .then((response) => {
-        console.log("data",response.data)
+        //console.log("data",response.data)
         setDivisi(response.data.division)
         axios.get(`${process.env.REACT_APP_API_HOST}/list_division_fields/${params.id}`)
         .then((response) => {
-          console.log(response.data.list_study_field)
+          //console.log(response.data.list_study_field)
           setDefaultBidangKeahlian(response.data.list_study_field)
-          console.log("default_bk", response.data.list_study_field)
+          //console.log("default_bk", response.data.list_study_field)
           getAllBidangKeahlian()
         })
       })
   }
 
   function submitEditUnitKerja(e) {
-    console.log(e)
+    //console.log(e)
     e.preventDefault()
     axios.put(`${process.env.REACT_APP_API_HOST}/divisions/${params.id}`, {
       name: unitKerjaNameEdit.current.value,
@@ -164,7 +164,7 @@ export default function FormBidangKeahlian ({}) {
   function getAllBidangKeahlian() {
     axios.get(`${process.env.REACT_APP_API_HOST}/study_fields`)
     .then((response) => {
-      console.log("bk", response.data)
+      //console.log("bk", response.data)
       setBidangKeahlian(response.data.study_field)
     })
   }

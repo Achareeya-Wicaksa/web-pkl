@@ -7,7 +7,7 @@ export default function Searchbar({useDropdown = false, dropdownOptions = [], pl
 
     function handleMonthChange(e) {
         setMonth(e.target.value)
-        console.log("child", e.target.value)
+        //console.log("child", e.target.value)
         onMonthChange(e.target.value)
     }
     function handletext(e) {

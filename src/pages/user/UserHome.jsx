@@ -76,7 +76,7 @@ export default function UserHome() {
             </div>
 
            <div data-aos="fade-down" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="false" data-aos-anchor-placement="top-center">
-            <div className="px-32 py-12 bg-[#F3FBFF] flex flex-col min-h-[100vh]">
+            <div className="px-32 py-12 bg-[#F3FBFF] flex flex-col min-h-[93vh]">
                 <b className="mt-5 text-4xl text-[#35A5D9]">Lowongan Divisi</b>
                 <span className="mt-7">Sebelum melakukan pendaftaran silahkan cek kesesuaian  posisi yang ingin kalian lamar dengan ilmu keahlian kalian</span>
                 <div className="mt-7 flex flex-row grid grid-cols-3 divide-x">
@@ -100,10 +100,11 @@ export default function UserHome() {
                         })
                     }
                 </div>
+                
                 </div>
 
-                <div className="flex w-full items-end justify-end">
-                    <div className="mt-7 flex gap-2">
+                <div className="flex w-full items-end justify-end bg-[#F3FBFF] position: sticky pb-10">
+                    <div className="mt-7 mr-10 flex gap-2">
                         <button className="border rounded w-6 h-6 flex items-center justify-center hover:bg-blue-500" onClick={() => {
                             if (currentPage >= maxPerPage) setCurrentPage(currentPage - maxPerPage)
                         }

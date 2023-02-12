@@ -79,21 +79,7 @@ code {
 }
 
 
-body {
-  background-color: #eeeeee;
-}
 
-.containerFluid {
-  width: 40%;
-  margin: 0 auto;
-  margin-top: 100px;
-}
-
-.containerFluid h2 {
-  color: hotpink;
-  position: relative;
-  width: 24rem;
-}
 
 .containerFluid h2::after {
   position: absolute;

@@ -38,7 +38,7 @@ export default function Form ({}) {
         axios.get(`${process.env.REACT_APP_API_HOST}/submissions/${query.id}`)
         .then((response) => {
             setSubmissionInfo(response.data.submission)
-            console.log(response.data.submission)
+            //console.log(response.data.submission)
             axios.get(`${process.env.REACT_APP_API_HOST}/trainees/${response.data.submission.code_submission}`)
             .then((result) => {
                 
@@ -60,7 +60,7 @@ export default function Form ({}) {
             phone: phone.current.value
         })
         .then((response) => {
-            console.log(response.data)
+            //console.log(response.data)
             window.location.reload()
         })
         .catch(console.error)

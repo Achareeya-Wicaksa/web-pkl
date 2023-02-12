@@ -28,7 +28,7 @@ export default function ChangePassword() {
             new_password: new_password.current.value
         })
             .then((response) => {
-                console.log(response.data)
+                //console.log(response.data)
                 localStorage.setItem("ap_data", JSON.stringify({
                     token: response.data.token,
                     isLoggedIn: true

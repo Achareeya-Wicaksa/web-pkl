@@ -84,7 +84,7 @@ Modal.setAppElement("#root");
 export default function Editkuota() {
   const [userInfo, setUserInfo] = useState();
   const [data, setData] = useState([]);
-  console.log(data, "fsdfsfsdf");
+  //console.log(data, "fsdfsfsdf");
   const [bidangKeahlian, setBidangKeahlian] = useState([]);
   const [checkedBK, setCheckedBK] = useState([]);
   const [tableIndexer, setTableIndexer] = useState(0);
@@ -133,7 +133,7 @@ export default function Editkuota() {
   }, []);
 
   useEffect(() => {
-    console.log(checkedBK);
+    //console.log(checkedBK);
   }, [checkedBK]);
 
   let subtitle;
@@ -182,7 +182,7 @@ export default function Editkuota() {
   }
 
   function submitEditUnitKerja(e) {
-    console.log(e);
+    //console.log(e);
     e.preventDefault();
     axios
       .put(
@@ -249,7 +249,7 @@ export default function Editkuota() {
           }
         )
         .then((response) => {
-          console.log(response, "post");
+          //console.log(response, "post");
         })
         .catch(console.error);
     }
@@ -301,11 +301,11 @@ export default function Editkuota() {
       {
         Header: "Bidang Keahlian",
         accessor: (row) => {
-          console.log(row, "row");
+          //console.log(row, "row");
           if (!!row.list_study_field) {
             let str = "";
             row.list_study_field.forEach((val, index) => {
-              console.log(val, index, "up");
+              //console.log(val, index, "up");
               if (index < row.list_study_field.length - 1) {
                 str += val + ", ";
               } else str += val;

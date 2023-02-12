@@ -109,7 +109,7 @@ export default function EditBidangKeahlian ({}) {
   function getAllBidangKeahlian() {
     axios.get(`${process.env.REACT_APP_API_HOST}/study_fields`)
     .then((response) => {
-      console.log("bk", response.data.study_field)
+      //console.log("bk", response.data.study_field)
       setBidangKeahlian(response.data.study_field)
     })
   }

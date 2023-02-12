@@ -107,7 +107,7 @@ var error
     }
     if(values.division_id==""){
         error=
-        <div class="animate-jump-in animate-once animate-delay-2000 p-8 space-y-4 fixed bottom-0 right-0 ">
+        <div class="animate-jump-in animate-once animate-delay-2000 p-8 space-y-4 relative bottom-0 right-0 ">
         <div class="Message Message--green">
             <div class="Message-icon">
                 <i class="fa fa-exclamation"></i>
@@ -121,7 +121,7 @@ var error
     }
     if(values.total_trainee == ""){
         error=
-        <div class="animate-jump-in animate-once animate-delay-2000 p-8 space-y-4 fixed bottom-0 right-0 ">
+        <div class="animate-jump-in animate-once animate-delay-2000 p-8 space-y-4 relative bottom-0 right-0 ">
         <div class="Message Message--green">
             <div class="Message-icon">
                 <i class="fa fa-exclamation"></i>
@@ -135,7 +135,7 @@ var error
     }
     if(values.school_origin==""){
         error=
-        <div class="animate-jump-in animate-once animate-delay-2000 p-8 space-y-4 fixed bottom-0 right-0 ">
+        <div class="animate-jump-in animate-once animate-delay-2000 p-8 space-y-4 relative bottom-0 right-0 ">
         <div class="Message Message--green">
             <div class="Message-icon">
                 <i class="fa fa-exclamation"></i>
@@ -149,7 +149,7 @@ var error
     }
     if(values.email==""){
         error=
-        <div class="animate-jump-in animate-once animate-delay-2000 p-8 space-y-4 fixed bottom-0 right-0 ">
+        <div class="animate-jump-in animate-once animate-delay-2000 p-8 space-y-4 relative bottom-0 right-0 ">
         <div class="Message Message--green">
             <div class="Message-icon">
                 <i class="fa fa-exclamation"></i>
@@ -163,7 +163,7 @@ var error
     }
     if(values.name==""){
         error=
-        <div class="animate-jump-in animate-once animate-delay-2000 p-8 space-y-4 fixed bottom-0 right-0 ">
+        <div class="animate-jump-in animate-once animate-delay-2000 p-8 space-y-4 relative bottom-0 right-0 ">
         <div class="Message Message--green">
             <div class="Message-icon">
                 <i class="fa fa-exclamation"></i>

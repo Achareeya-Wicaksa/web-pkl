@@ -42,7 +42,7 @@ export default function CekAjuan() {
                     <Button text={"Periksa"} onClick={async () => {
                         const data = (await axios.get(`${process.env.REACT_APP_API_HOST}/submissions/${registrationNumber}`)).data;
                         setSubmission(data.submission)
-                    }} className="mt-7 w-60 rounded-md bg-[#35A5D9] hover:bg-[#E7F7FF] hover:text-[#35A5D9] font-normal" />
+                    }} className="mt-7 w-60 rounded-md bg-[#35A5D9] hover:bg-[#E7F7FF] hover:text-[#35A5D9] font-normal hover:bg-white hover:text-[#35A5D9] hover:-translate-y-1 hover:scale-110" />
                 </div>
             </div>
 
