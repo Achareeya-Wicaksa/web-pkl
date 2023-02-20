@@ -93,7 +93,7 @@ var error
 
     if(values.study_field_id==""){
         error=
-        <div class="animate-jump-in animate-once animate-delay-2000 p-8 space-y-4 fixed bottom-0 right-0 ">
+        <div class="animate-jump-in animate-once animate-delay-2000 p-8 space-y-4 relative bottom-0 right-0 ">
         <div class="Message Message--green">
             <div class="Message-icon">
                 <i class="fa fa-exclamation"></i>
@@ -230,7 +230,7 @@ var error
 
                 <div className="mt-4">
                     <label for="countries" className="block mb-2 text-sm font-medium text-gray-900">Upload Surat Pengantar (maksimal 2 mb)</label>
-                    <input type="file" onChange={handleChangeFile} className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[40rem] p-2.5" id="file" />
+                    <input type="file" accept='application/pdf' onChange={handleChangeFile} className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[40rem] p-2.5" id="file" />
                 </div>
 
                 <Button text={"Submit"} type={"submit"} className="mt-12 w-[40rem] rounded-md bg-[#35A5D9] hover:bg-[#E7F7FF] hover:text-[#35A5D9] font-normal" />

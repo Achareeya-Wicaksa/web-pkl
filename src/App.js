@@ -16,6 +16,7 @@ import Pendaftaran from './pages/user/Pendaftaran';
 import FAQ from './pages/user/FAQ';
 import EditBidangKeahlian from './pages/EditBidangKeahlian';
 import ChangePassword from './pages/ChangePassword';
+import NotFound from './pages/NotFound';
 
 function App() {
   (function () {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/cekajuan" element={<CekAjuan />} />
         <Route path="/daftar" element={<Pendaftaran />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="*" element={<NotFound />} />
 
 
         <Route path="/admin" element={<Home />} />

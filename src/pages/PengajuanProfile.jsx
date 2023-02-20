@@ -112,7 +112,7 @@ export default function PengajuanProfile ({}) {
                                 :
                                 <div className="flex flex-col">
                                     <label htmlFor="file" className="w-fit border-2 border-black rounded-xl px-7 py-1 cursor-pointer" aria-readonly>Upload Surat Balasan</label>
-                                    <input type={"file"} className="border-2 border-black rounded-xl px-7 py-1 hidden" id="file" onInput={submitLetter} />
+                                    <input type={"file"} accept='application/pdf' className="border-2 border-black rounded-xl px-7 py-1 hidden" id="file" onInput={submitLetter} />
                                     {
                                         letterSent === 1?
                                             <span>Mengirim surat balasan...</span>
