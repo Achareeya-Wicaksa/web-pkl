@@ -10,6 +10,7 @@ import { DownloadTableExcel, downloadExcel } from 'react-export-table-to-excel';
 import { useRef } from "react";
 
 
+
   
   // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 
@@ -291,7 +292,7 @@ export default function Pengajuan () {
             <Helmet>
                 <title>Home - Angkasa Pura</title>
             </Helmet>
-            <div className="h-screen w-screen bg-sky-300 p-5 lg:p-12 lg:py-6">
+            <div className="h-screen w-screen bg-sky-300 p-5 lg:p-12 lg:py-6 ">
                 {
                 userInfo ?
                 <div className="flex flex-row gap-3">
@@ -306,15 +307,18 @@ export default function Pengajuan () {
                     </div>
                     
                     <div className="flex flex-col gap-3">
-                        <div className="bg-white rounded-xl p-5 flex flex-col items-start h-48 gap-1">
+                        <div className="bg-white rounded-xl p-5 flex flex-col items-start h-48 gap-1 pb-10">
                             <div className="flex justify-between w-full">
                                 <div className="flex flex-col gap-1">
                                     <b className="text-2xl">Halo {userInfo.name.split(" ")[0]}!</b>
                                     <span className="text-slate-600">Selamat datang kembali!</span>
+                                    
                                 </div>
-                                <button onClick={handleExport} className="bg-blue-600 rounded-lg text-white px-3 py-1 h-fit">Export</button>
+
+                                <button onClick={handleExport} className="bg-blue-600 rounded-lg text-white px-3 py-1 h-fit ml-[900px]">Export</button>
+                                <button onClick={() => setShowModal(true)} className="bg-red-600 rounded-lg text-white px-3 py-1 h-fit  ">Hapus bulan {montext}</button>                             
+
                             </div>
-                            
                             <Searchbar useDropdown={true} dropdownOptions={ddopt} className="mt-5" onMonthChange={handleMonthChange} textchange={handleText}/>
                             
                         </div>
@@ -371,7 +375,7 @@ export default function Pengajuan () {
 </div>
         </>
       ) : null}
-                                <button onClick={() => setShowModal(true)} className="bg-red-600 rounded-lg text-white px-3 py-1 h-fit">Hapus bulan {montext}</button>
+                               
 
                     </div>
                 </div>
