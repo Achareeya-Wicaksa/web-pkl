@@ -314,10 +314,10 @@ export default function Pengajuan () {
                                     <span className="text-slate-600">Selamat datang kembali!</span>
                                     
                                 </div>
-
-                                <button onClick={handleExport} className="bg-blue-600 rounded-lg text-white px-3 py-1 h-fit ml-[900px]">Export</button>
-                                <button onClick={() => setShowModal(true)} className="bg-red-600 rounded-lg text-white px-3 py-1 h-fit  ">Hapus bulan {montext}</button>                             
-
+                                <div>
+                                <button onClick={handleExport} className="bg-blue-600 rounded-lg text-white px-3 py-1 h-fit ml-[00px]">Export</button>
+                                <button onClick={() => setShowModal(true)} className="bg-red-600 rounded-lg text-white px-3 py-1 h-fit ml-10 ">Hapus bulan {montext}</button>                             
+                                </div>
                             </div>
                             <Searchbar useDropdown={true} dropdownOptions={ddopt} className="mt-5" onMonthChange={handleMonthChange} textchange={handleText}/>
                             
