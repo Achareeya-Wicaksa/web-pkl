@@ -49,32 +49,37 @@ export default function Pendaftaran() {
                 });
         };
         getKeilmuan();
-    }, []);
 
-    axios.get(`${process.env.REACT_APP_API_HOST}/charts/all_division`)
+
+  axios.get(`${process.env.REACT_APP_API_HOST}/charts/all_division`)
     .then((res) => {
         //res.preventdefault()
       for(let i=0;i<res.data.division.length;i++) {
         labels.push(res.data.division[i].name)
         quota.push(res.data.division[i].quota)
         acc.push(res.data.division[i].total)
+        setLabel(labels)
       }
       
-      setLabel(res.data.division.name)
-        console.log(labels[2])
+      
+        console.log(label.length)
          //
      
 
     })
 
-const arr = labels.map((labels,index) =>{
-   return (
+    }, []);
+
+var arr = []
+
+ for(let i=0;i<label.length/2;i++) {
+   arr[i]= (
     <div>
-   <p class="text-sm text-gray-500 ">{labels}</p>
-   <p>Kuota tersedia adalah : {quota[index]-acc[index]}</p> <br></br>
+   <p class="text-sm text-gray-500 ">{label[i]}</p>
+   <p>Kuota tersedia adalah : {quota[i]-acc[i]}</p> <br></br>
    </div>
    )
-})
+}
     return (
         <div>
             <Helmet>
